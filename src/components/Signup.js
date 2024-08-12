@@ -6,20 +6,33 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleSignup = () => {
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    users.push({ username, password });
-    localStorage.setItem('users', JSON.stringify(users));
-    navigate.push('/login');
+  const handleSignup = (e) => {
+    e.preventDefault();
+    localStorage.setItem('user', JSON.stringify({ username, password }));
+    navigate('/login');
   };
 
   return (
-    <div>
-      <h2>Sign Up</h2>
-      <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-      <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <button onClick={handleSignup}>Sign Up</button>
-    </div>
+    <form onSubmit={handleSignup}>
+      <h2>Signup</h2>
+      <div>
+        <label>Username:</label>
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+      </div>
+      <div>
+        <label>Password:</label>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </div>
+      <button type="submit">Sign Up</button>
+    </form>
   );
 };
 

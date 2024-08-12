@@ -12,8 +12,8 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/videos" element={<PrivateRoute element={<VideoList />} />} />
-        <Route path="/video/:id" element={<PrivateRoute element={<VideoPlayer />} />} />
+        <Route path="/videos" element={<PrivateRoute element={VideoList} />} />
+        <Route path="/video/:id" element={<PrivateRoute element={VideoPlayer} />} />
       </Routes>
     </Router>
   );

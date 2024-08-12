@@ -6,15 +6,15 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    const user = users.find(user => user.username === username && user.password === password);
+  const handleLogin = (e) => {
+    e.preventDefault();
 
-    if (user) {
-      localStorage.setItem('loggedInUser', JSON.stringify(user));
-      navigate.push('/videos');
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    if (storedUser && storedUser.username === username && storedUser.password === password) {
+        localStorage.setItem('loggedInUser', username);
+        navigate('/videos');
     } else {
-      alert('Invalid credentials');
+        alert('Invalid username or password');
     }
   };
 
