@@ -5,11 +5,13 @@ import Signup from './components/Signup';
 import VideoList from './components/VideoList.js';
 import VideoPlayer from './components/VideoPlayer.js';
 import PrivateRoute from './components/PrivateRoute';
+import Root from './components/Root.js';
 
 function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<Root />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/videos" element={<PrivateRoute element={VideoList} />} />
